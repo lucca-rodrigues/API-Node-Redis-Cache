@@ -3,9 +3,9 @@ const githubAPI = require("../Services/githubAPI");
 async function listAllRepositoriesByOrg(req, res) {
   try {
     const { organization } = req.params;
-    const response = await githubAPI.get(`/orgs/${organization}/repos`);
+    const { data } = await githubAPI.get(`/orgs/${organization}/repos`);
 
-    const { login, id, avatar_url } = response.data[0].owner;
+    const { login, id, avatar_url } = data[0].owner;
 
     const organizationData = { login, id, avatar_url };
 
